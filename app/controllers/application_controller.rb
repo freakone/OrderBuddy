@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def authorize_api
+    unless current_user
+      render json: { error: 'Not Authorized Access' }, status: 403
+    end
+  end
 end
