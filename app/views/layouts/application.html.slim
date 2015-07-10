@@ -22,7 +22,7 @@ html ng-app="OrderBuddy"
                   ul.nav.navbar-right.navbar-nav
                     - if current_user
                       li.pull_right
-                      =image_tag("asdasd")
+                      =image_tag("#{current_user.image}")
                       =link_to "Signed in as #{current_user.name}", signout_path
                     - else
                       li= link_to 'Sign in with Facebook', "/auth/facebook"
