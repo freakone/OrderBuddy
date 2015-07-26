@@ -1,11 +1,13 @@
 doctype html
-html ng-app="OrderBuddy"
+html ng-app="OrderBuddyJs"
   head
     base href="/"
     title OrderBuddy
-    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'    
     = csrf_meta_tags
-  body
+
+  body    
+
     .navbar.navbar-default
       .container-fluid
             button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
@@ -21,6 +23,8 @@ html ng-app="OrderBuddy"
                         li= link_to "Order history", "/path2"                    
                   ul.nav.navbar-right.navbar-nav
                     - if current_user
+                      = javascript_include_tag 'application'
+                      = js_env
                       li.pull_right
                       =image_tag("#{current_user.image}")
                       =link_to "Signed in as #{current_user.name}", signout_path
@@ -31,7 +35,9 @@ html ng-app="OrderBuddy"
       .row
         .col-lg-9
           = bootstrap_flash
-          = yield
+          div ui-view=""
+
+          ="asd"
         .col-lg-3
           .well.sidebar-nav
             h3 Sidebar
@@ -42,4 +48,4 @@ html ng-app="OrderBuddy"
               li= link_to "Link 3", "/path3"
 
       footer
-        p &copy; Company <%= Date.today.year %>
+        p &copy; Monterail #{Date.today.year}
