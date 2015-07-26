@@ -10,7 +10,7 @@ def users
 end
 
 def show
-  render json: Order.find(params[:id])
+  render json: Order.find(params[:id]), :include => [:items, :user => {:only => [:name]}]
 end
 
 end

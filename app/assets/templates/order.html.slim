@@ -1,1 +1,26 @@
-Label blah
+div.panel.panel-primary
+  div.panel-heading.panel-title
+    | Zamówienie w lokalu <b>{{order.restauration}}</b> z dnia {{order.created_at | date: "MM/dd/yyyy"}}
+
+  div.panel-body
+    | Zamówione pozycje
+    table.table.table-striped
+      tr
+        td="#"
+        td="Date"
+        td="User"
+        td="Order"
+        td="Price"
+
+      tr ng-repeat="item in order.items track by $index"
+        td
+          | {{ $index + 1}}
+        td
+          | {{item.created_at | date: "MM/dd/yyyy 'at' h:mma"}}
+        td
+          | {{order.user.name}}
+        td
+          | {{item.name}}
+        td
+          | {{item.price}}
+      
