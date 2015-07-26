@@ -9,4 +9,8 @@ def users
   render json: User.all
 end
 
+def show
+  render json: Order.find(params[:id])
+end
+
 end

@@ -1,2 +1,3 @@
-angular.module('OrderBuddyJs').controller 'OrdersCtrl', ($scope, Rails) ->
-  $scope.blah = Rails.env
+angular.module('OrderBuddyJs').controller 'OrdersCtrl', ($scope, OrderBuddySrv, orders, Rails) ->
+  $scope.orders = orders.data
+  $scope.test = Rails.env

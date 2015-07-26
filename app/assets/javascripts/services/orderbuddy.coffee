@@ -3,5 +3,7 @@ angular.module('OrderBuddyJs').service 'OrderBuddySrv', ($http, Rails) ->
 
   index: ->
     $http.get(base)
-  show: (id) ->
+
+  order: (id) ->
     $http.get("#{base}/#{id}")
+ 
