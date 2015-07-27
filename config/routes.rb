@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   namespace :api do
-    resources :orders
+    resources :orders do
+      member do
+        post 'ordered'
+        post 'delivered'
+        post 'new_item'
+      end
+    end
     resources :users
   end
 
@@ -13,5 +19,5 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get '*path', to: 'home#index'
+  #get '*path', to: 'home#index'
 end

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
 gem "twitter-bootstrap-rails"
-
+gem "sprockets"
 gem 'omniauth-facebook'
 gem 'rails', '~> 4.1.6'
 gem 'coffee-rails', '~> 4.0.1'

@@ -1,0 +1,1 @@
+<div class="list-group"><div ng-repeat="order in orders"><a class="list-group-item" ui-sref="order({id: order.id})"><span class="label label-primary">{{ order.created_at | date: "MM/dd/yyyy" }}</span>&nbsp; {{ order.restauration }}<span class="badge">{{ order.items.length }}</span></a></div></div>

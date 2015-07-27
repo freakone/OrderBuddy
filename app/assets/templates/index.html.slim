@@ -2,5 +2,7 @@ div.list-group
   div ng-repeat="order in orders"
     a.list-group-item ui-sref="order({id: order.id})" 
       span.label.label-primary 
-        | {{order.created_at | date: "MM/dd/yyyy"}}
+        | {{ order.created_at | date: "MM/dd/yyyy" }}
       | &nbsp; {{ order.restauration }}
+      span.badge
+        | {{ order.items.length }}

@@ -176,6 +176,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   slim-rails (~> 2.1.0)
+  sprockets
   sqlite3
   turbolinks
   twitter-bootstrap-rails

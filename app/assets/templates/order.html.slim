@@ -1,9 +1,15 @@
 div.panel.panel-primary
   div.panel-heading.panel-title
-    | Zamówienie w lokalu <b>{{order.restauration}}</b> z dnia {{order.created_at | date: "MM/dd/yyyy"}}
+    div.container-fluid
+      div.row
+        div.col-md-10
+          | Order in restaurant <b>{{order.restauration}}</b> from {{order.created_at | date: "MM/dd/yyyy"}}
+        div-col-md-2
+          span.glyphicon.glyphicon-earphone
+          span.badge
+            | {{ order.phone }}
 
   div.panel-body
-    | Zamówione pozycje
     table.table.table-striped
       tr
         td="#"
@@ -18,9 +24,57 @@ div.panel.panel-primary
         td
           | {{item.created_at | date: "MM/dd/yyyy 'at' h:mma"}}
         td
-          | {{order.user.name}}
+          | {{item.user.name}}
         td
           | {{item.name}}
         td
-          | {{item.price}}
-      
+          | {{item.price | currency}}
+    
+    div.container-fluid
+      div.row
+        div.col-md-6
+          dl.dl-horizontal
+            dt = "Order created by"
+            dd = "{{ order.user.name }}"
+        div.col-md-6
+          dl.dl-horizontal
+            dt = "Ordered"
+            dd ng-if="order.ordered" 
+              span.label.label-success yes
+
+            dd ng-if="!order.ordered"
+              span.label.label-danger no
+              
+            
+            dt = "Delivered"
+            dd ng-if="order.delivered" 
+              span.label.label-success yes
+
+            dd ng-if="!order.delivered"
+              span.label.label-danger no
+            
+            dd
+              p 
+
+            dd              
+              button.btn.btn-danger.btn-sm.btn-block ng-if="order.ordered" ng-click="setOrdered(order, false)" = "Mark as unordered"
+              button.btn.btn-success.btn-sm.btn-block ng-if="!order.ordered" ng-click="setOrdered(order, true)" = "Mark as ordered"
+              button.btn.btn-success.btn-sm.btn-block.btn-sm.btn-block ng-if="!order.delivered" ng-click="setDelivered(order, true)" = "Mark as delivered"
+              button.btn.btn-danger.btn-sm.btn-block ng-if="order.delivered" ng-click="setDelivered(order, false)" = "Mark as undelivered"
+
+div.panel.panel-primary ng-if="order.can_add_item"
+  div.panel-heading.panel-title Add item to order 
+  div.panel-body
+    form
+      div.form-group 
+        label for="inputItem" 
+          | Item
+        input.form-control type="text" ng-model="new_item"placeholder="Type your order"
+      div.form-group 
+        label for="inputPrice" 
+          | Price
+        div.input-group
+          div.input-group-addon $
+          input.form-control type="text" ng-model="new_price" placeholder="Type price for your order"
+      button.btn.btn-default ng-click="add()" Add item
+       
