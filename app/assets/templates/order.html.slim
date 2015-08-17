@@ -69,12 +69,12 @@ div.panel.panel-primary ng-if="order.can_add_item"
       div.form-group 
         label for="inputItem" 
           | Item
-        input.form-control type="text" ng-model="new_item"placeholder="Type your order"
+        input.form-control type="text" ng-model="new_item" placeholder="Type your order"
       div.form-group 
         label for="inputPrice" 
           | Price
         div.input-group
           div.input-group-addon $
           input.form-control type="text" ng-model="new_price" placeholder="Type price for your order"
-      button.btn.btn-default ng-click="add()" Add item
+      button.btn.btn-default ng-click="add(new_item, new_price)" Add item
        

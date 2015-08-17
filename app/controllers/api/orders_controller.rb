@@ -10,35 +10,19 @@ def users
 end
 
 def show
-  render json: Order.find(params[:id])
+  render json: Order.find(params[:id]).get_json(current_user)
 end
 
 def ordered
-  o = Order.find(params[:id])
-  o.ordered = params[:state]
-  o.save!
-
-  render json: o
+  render json: Order.update(params[:id], ordered: params[:state]).get_json(current_user)
 end
 
 def delivered
-  o = Order.find(params[:id])
-  o.delivered = params[:state]
-  o.save!
-
-  render json: o
+  render json: Order.update(params[:id], delivered: params[:state]).get_json(current_user)
 end
 
 def new_item
-  o = Order.find(params[:id])
-  i = Item.new()
-  i.order = o
-  i.name = params[:new_item]
-  i.price = params[:new_price]
-  i.user = current_user
-  i.save!
-
-  render json: i
+  render json: Item.create({order: Order.find(params[:id]), name: params[:new_item], price: params[:new_price], user: current_user})
 end
 
 end
