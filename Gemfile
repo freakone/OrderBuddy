@@ -17,8 +17,7 @@ gem 'rails-assets-ui-router', '~> 0.2.9'
 gem 'rails-assets-angular-translate'
 gem 'turbolinks'
 gem 'bower-rails'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
