@@ -17,7 +17,7 @@ div.panel.panel-primary
         td="User"
         td="Order"
         td="Price"
-        td=""
+        td ng-hide="order.can_add_item"
 
       tr ng-repeat="item in order.items track by $index"
         td
@@ -30,8 +30,8 @@ div.panel.panel-primary
           | {{item.name}}
         td
           | {{item.price | currency}}
-        td
-          span.glyphicon.glyphicon-remove ng-show="item.user.id == order.current_user_id" ng-click="delete(item)"  style="cursor:pointer;"
+        td ng-hide="order.can_add_item"
+          span.glyphicon.glyphicon-remove ng-show="item.user.id == order.current_user_id" ng-click="delete(item, $index)"  style="cursor:pointer;"
     
     div.container-fluid
       div.row

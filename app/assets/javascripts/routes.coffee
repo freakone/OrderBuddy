@@ -4,11 +4,19 @@ angular.module('OrderBuddyJs').config ($stateProvider, $urlRouterProvider) ->
   $stateProvider
     .state 'index',
       url: '/',
-      controller: 'OrdersCtrl'
-      resolve:
-        orders: (OrderBuddySrv) ->
-          OrderBuddySrv.index()
-      templateUrl: '/assets/index.html'
+      views:
+        "":
+          templateUrl: '/assets/index.html'
+          controller: 'OrdersCtrl'
+          resolve:
+            orders: (OrderBuddySrv) ->
+              OrderBuddySrv.index()
+        "users":
+          controller: 'UsersCtrl'
+          resolve:
+            users: (OrderBuddySrv) ->
+              OrderBuddySrv.users()
+          templateUrl: '/assets/users.html'
 
     .state 'order',
       url: '/order/:id',
@@ -17,5 +25,18 @@ angular.module('OrderBuddyJs').config ($stateProvider, $urlRouterProvider) ->
         order: ($stateParams, OrderBuddySrv) ->
           OrderBuddySrv.order($stateParams.id)
       templateUrl: '/assets/order.html'
+
+    .state 'history',
+      url: '/history',
+      controller: 'OrdersCtrl'
+      resolve:
+        orders: (OrderBuddySrv) ->
+          OrderBuddySrv.history()
+      templateUrl: '/assets/history.html'
+
+    .state 'new',
+      url: '/new',
+      controller: 'NewCtrl'
+      templateUrl: '/assets/new.html'
 
       

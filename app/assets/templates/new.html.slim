@@ -1,0 +1,15 @@
+div.panel.panel-primary
+  div.panel-heading.panel-title Add new order 
+  div.panel-body
+    form
+      div.form-group 
+        label for="inputName" 
+          | Restauration name
+        input.form-control type="text" ng-model="order_name" placeholder="Type restauration name"
+
+      div.form-group 
+        label for="inputPhone" 
+          | Restauration phone number
+        input.form-control type="text" ng-model="order_phone" placeholder="Type phone number of the restauration"
+      
+      button.btn.btn-default ng-click="add(order_name, order_phone)" Add new order

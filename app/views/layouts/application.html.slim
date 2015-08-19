@@ -19,8 +19,8 @@ html ng-app="OrderBuddyJs"
             div.collapse.navbar-collapse
                   ul.nav.navbar-nav
                     - if current_user
-                        li= link_to "New order", "/new"
-                        li= link_to "Order history", "/history"                    
+                        li= link_to "New order", "/#/new"
+                        li= link_to "Order history", "/#/history"                    
                   ul.nav.navbar-right.navbar-nav
                     - if current_user
                       = javascript_include_tag 'application'
@@ -36,14 +36,7 @@ html ng-app="OrderBuddyJs"
         .col-lg-9
           = bootstrap_flash
           div ui-view=""
-        .col-lg-3
-          .well.sidebar-nav
-            h3 Sidebar
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+        div ui-view="users"          
 
       footer
         p &copy; Monterail #{Date.today.year}

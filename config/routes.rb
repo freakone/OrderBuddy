@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   namespace :api do
+    get 'history', to: 'orders#history'
     resources :orders do
       member do
         post 'ordered'
         post 'delivered'
         post 'new_item'
+        post 'delete_item'
       end
     end
     resources :users
+    resources :items
   end
 
   get 'api' => proc { [404, {}, ['Invalid API endpoint']] }

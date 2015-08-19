@@ -2,11 +2,15 @@ class Api::OrdersController < ApplicationController
 before_action :authorize_api
 
 def index
-  render json: Order.all, :include => {:items => {only: :id}}
+  render json: Order.where(delivered: [false, nil])
 end
 
-def users
-  render json: User.all
+def create
+  render json: Order.create({restauration: params[:name], phone: params[:phone], user: current_user})
+end
+
+def history
+  render json: Order.where(delivered: true)
 end
 
 def show
@@ -19,10 +23,6 @@ end
 
 def delivered
   render json: Order.update(params[:id], delivered: params[:state]).get_json(current_user)
-end
-
-def new_item
-  render json: Item.create({order: Order.find(params[:id]), name: params[:new_item], price: params[:new_price], user: current_user})
 end
 
 end

@@ -4,6 +4,6 @@ class Item < ActiveRecord::Base
   validates :order_id, :name, :price, presence: true
 
   def as_json(options)
-    super({:include => {:user => {only: :name}}}.merge(options))
+    super({:include => {:user => {only: [:name, :id]}}}.merge(options))
   end
 end
