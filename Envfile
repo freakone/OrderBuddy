@@ -1,9 +1,10 @@
 enable_defaults! { ENV['RACK_ENV'] != 'production' }
 
 variable :HOST, :string, default: 'localhost:3000'
+variable :FACEBOOK_APP_ID, :string, default: "891559587576698"
+variable :FACEBOOK_SECRET, :string, default: "605ab81d2ad8dd56faf18ce9dcf6f710"
 
 group :production do
-  host: <%= ENV["MY_SERVICE_HOST"] %>
-  port: <%= ENV["MY_SERVICE_PORT"] %>
+  variable :DATABASE_URL
 end
 

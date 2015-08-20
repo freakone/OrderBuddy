@@ -5,5 +5,5 @@ if Rails.env.development?
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, "891559587576698", "605ab81d2ad8dd56faf18ce9dcf6f710"
+  provider :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"]
 end
