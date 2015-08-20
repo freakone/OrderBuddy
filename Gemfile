@@ -17,7 +17,8 @@ gem 'rails-assets-ui-router', '~> 0.2.9'
 gem 'rails-assets-angular-translate'
 gem 'turbolinks'
 gem 'bower-rails'
-gem 'pg'
+gem 'pg', '~> 0.18.0'
+gem 'puma'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

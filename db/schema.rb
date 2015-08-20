@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150710190724) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "items", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20150710190724) do
     t.integer  "user_id"
   end
 
-  add_index "items", ["order_id"], name: "index_items_on_order_id"
-  add_index "items", ["user_id"], name: "index_items_on_user_id"
+  add_index "items", ["order_id"], name: "index_items_on_order_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.datetime "created_at"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150710190724) do
     t.boolean  "delivered"
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

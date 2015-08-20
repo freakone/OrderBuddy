@@ -1,16 +1,20 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+  username: orderbuddy
+  password: a 
+
 development:
-  adapter: postgresql
+  <<: *default
   database: orderbuddy_development
-  pool: 5
-  timeout: 5000
+
 test:
-  adapter: postgresql
+  <<: *default
   database: orderbuddy_test
-  pool: 5
-  timeout: 5000
 
 production:
-  adapter: postgresql
+  <<: *default
   database: orderbuddy_production
-  pool: 5
-  timeout: 5000
