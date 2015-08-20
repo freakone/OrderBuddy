@@ -1,8 +1,26 @@
 class Api::OrdersController < ApplicationController
 before_action :authorize_api
+require 'json'
 
 def index
-  render json: Order.where(delivered: [false, nil])
+  
+  hash = []
+
+  Order.where(delivered: [false, nil]).find_each do |order|
+    hash.push(order.get_json(current_user))
+  end
+  
+  render json: hash
+end
+
+def destroy
+  order = Order.find(params[:id])
+  if order.user_id == current_user.id
+    order.destroy!
+    head 200
+  else
+    head 404
+  end
 end
 
 def create

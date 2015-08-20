@@ -16,5 +16,5 @@ angular.module('OrderBuddyJs').controller 'OrderCtrl', ($scope, OrderBuddySrv, o
 
   $scope.delete = (item, idx) ->
     OrderBuddySrv.deleteItem(item.id).success (response) ->
-      $scope.order.items.splice(idx, 1);
+      $scope.order.items.splice(idx, 1)
       $scope.order.can_add_item = true

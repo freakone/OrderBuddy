@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem "twitter-bootstrap-rails"
 gem "sprockets"
 gem 'omniauth-facebook'

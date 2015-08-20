@@ -1,8 +1,13 @@
-div.list-group
-  div ng-repeat="order in orders"
-    a.list-group-item ui-sref="order({id: order.id})" 
-      span.label.label-primary 
-        | {{ order.created_at | date: "MM/dd/yyyy" }}
-      | &nbsp; {{ order.restauration }}
-      span.badge
-        | {{ order.items.length }}
+.col-lg-9
+  div.list-group
+    div ng-repeat="order in orders"
+      a.list-group-item ui-sref="order({id: order.id})" 
+        span.label.label-primary 
+          | {{ order.created_at | date: "MM/dd/yyyy" }}
+        | &nbsp; {{ order.restauration }}
+        
+        span.pull-right
+          span.badge
+            | {{ order.items.length }}
+          button.btn.btn-default.btn-sm ng-show="order.can_delete" ng-click="delete(order, $index)"
+            span.glyphicon.glyphicon-remove.pull-left aria-hidden="true"

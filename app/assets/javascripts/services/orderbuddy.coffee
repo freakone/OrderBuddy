@@ -17,10 +17,10 @@ angular.module('OrderBuddyJs').service 'OrderBuddySrv', ($http, Rails) ->
     $http.get("#{base}/#{id}")
 
   setOrdered: (id, state) ->
-    $http.post("#{base}/#{id}/ordered", state: state)
+    $http.post("#{base}/#{id}/ordered", {state: state})
 
   setDelivered: (id, state) ->
-    $http.post("#{base}/#{id}/delivered", state: state)
+    $http.post("#{base}/#{id}/delivered", {state: state})
 
   addItem: (id, new_item, new_price) ->
     $http.post("#{base_items}", {id: id, new_item: new_item, new_price: new_price})
@@ -28,5 +28,8 @@ angular.module('OrderBuddyJs').service 'OrderBuddySrv', ($http, Rails) ->
   deleteItem: (id) ->
     $http.delete("#{base_items}/#{id}/")
 
+  deleteOrder: (id) ->
+    $http.delete("#{base}/#{id}/")
+    
   addOrder: (name, phone) ->
      $http.post(base, {name: name, phone: phone})

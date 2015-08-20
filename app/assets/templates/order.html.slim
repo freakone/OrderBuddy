@@ -60,9 +60,9 @@ div.panel.panel-primary
               p 
 
             dd              
-              button.btn.btn-danger.btn-sm.btn-block ng-if="order.ordered" ng-click="setOrdered(order, false)" = "Mark as unordered"
-              button.btn.btn-success.btn-sm.btn-block ng-if="!order.ordered" ng-click="setOrdered(order, true)" = "Mark as ordered"
-              button.btn.btn-success.btn-sm.btn-block.btn-sm.btn-block ng-if="!order.delivered" ng-click="setDelivered(order, true)" = "Mark as delivered"
+              button.btn.btn-danger.btn-sm.btn-block ng-if="order.ordered" ng-hide="order.delivered" ng-click="setOrdered(order, false)" = "Mark as unordered"
+              button.btn.btn-success.btn-sm.btn-block ng-if="!order.ordered" ng-hide="order.delivered" ng-click="setOrdered(order, true)" = "Mark as ordered"
+              button.btn.btn-success.btn-sm.btn-block.btn-sm.btn-block ng-if="!order.delivered" ng-show="order.ordered" ng-click="setDelivered(order, true)" = "Mark as delivered"
               button.btn.btn-danger.btn-sm.btn-block ng-if="order.delivered" ng-click="setDelivered(order, false)" = "Mark as undelivered"
 
 div.panel.panel-primary ng-if="order.can_add_item"
