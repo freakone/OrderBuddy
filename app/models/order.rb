@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   has_many :items, dependent: :destroy
   validates :user_id, :restauration, :phone, presence: true
 
-  after_initialize :defaults
+  after_create :defaults
 
   def defaults
     self.delivered = false
